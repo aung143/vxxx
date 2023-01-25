@@ -1,2 +1,0 @@
-  <voucherPrinterAppConfigId>245</voucherPrinterAppConfigId>
-    <VoucherPrinterAppExpiredDate>24-02-2023</VoucherPrinterAppExpiredDate>
