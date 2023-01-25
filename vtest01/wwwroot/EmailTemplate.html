@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+    body{
+        padding: 0;
+        margin: 0;
+    }
+    .main{
+        background-color: #f4f4f4;
+    }
+    .content{
+        padding: 15px;
+        margin: 0;
+    }
+    .header{
+        background-color: hotpink;
+        
+    }
+    .header img{
+        width: 150px;
+    }
+    .center_text{
+        text-align: center;
+    }
+    .order_detail{
+        background-color: white;
+        padding: 15px;
+    }
+    .header_sytle_1{
+        border-top: 1px dashed black;
+        margin-top: 2%;
+    }
+    .header_sytle_1 p{
+        display: block;
+        padding: 0px 10px 0px 0px;
+        background-color: white;
+        margin-top: -10px;
+        margin-bottom: -10px;
+        float: left;
+    }
+    .product_count_table, .product_count_table tr, .totle_table, .totle_table tr{
+        border: 0;            
+        width: 100%;
+    }
+    .product_count_table tr td{
+        padding: 15px;
+    }
+    .brder_bottom_style{
+        border-bottom: 1px dashed black;
+    }
+    .totle_table tr td{
+        width: 50%;
+    }
+    .align_right{
+        text-align: right;
+    }
+    .noti_detail{
+        margin: 10px 0px;
+    }
+    .color-gray{
+        color: gray;
+    }
+    </style>
+</head>
+<body style="padding: 0;margin: 0;">
+    <div class="main">
+        <div class="header content">
+            <img src="https://www.freelogodesign.org/Content/img/logo-samples/bakary.png" alt="Logo Image Alt Text">
+        </div>
+        <div class="body content">
+            <h4>Hello,</h4>
+            <h3><b>You've received a new order to pickup.</b></h3>
+            <div class="order_detail">
+                <h4 class="center_text">{ShopName}</h4>
+                <p class="center_text">
+                    {Address}<br>
+                    Vocher ID : {VoucherId}<br>
+                </p>
+                <p>Order ID : {OrderId}</p>
+                <div class="header_sytle_1">
+                    <p>Qty</p>
+                </div>
+                <table class="product_count_table brder_bottom_style">
+                    {ItemData}
+                </table>
+
+                <table class="totle_table brder_bottom_style">
+                    <tr>
+                        <td>Total</td>
+                        <td class="align_right">{TotalAmt} Ks</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Fee</td>
+                        <td class="align_right">{DeliveryFee} Ks</td>
+                    </tr>
+                </table>
+
+                <table class="totle_table ">
+                    <tr>
+                        <td>Amount of Collect</td>
+                        <td class="align_right"><b>{NetAmt} Ks</b></td>
+                    </tr>
+                </table>
+            </div>
+<div class="noti_detail">
+    <p class="color_gray">Pick Up location:</p>
+    <p>{PickUpAddress}</p>
+</div>
+<div class="noti_detail">
+    <p class="color_gray">To Deliver:</p>
+    <p>{ToDeliverAddress}</p>
+</div>
+<div class="noti_detail">
+    <p class="color_gray">Customer Note:</p>
+    <p style="background-color: white; padding: 10px;">{CustomerRemark}</p>
+</div>
+<div>
+    <tr>
+        <td align="center">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+    
+            </table>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <p style="font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; padding: 10px;">
+                    {ShopName}
+                    Co.,Ltd Myanmar</p>
+                <p style="font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px;">&nbsp; All
+                    Right Reserved &nbsp; &nbsp;|&nbsp; &nbsp; Privacy Policy</p>
+            </div>
+        </td>
+    </tr>
+</div>
+        </div>
+        <div class="footer content">
+            <div class="col" style="display: block; float: left; width: 50px;">
+                <img src="https://www.freelogodesign.org/Content/img/logo-samples/bakary.png" alt="Logo Image Alt Text" style="width: 100px; height: 100px; padding:50px;">
+            </div>
+            <div class="col" style="display: block; float: right; padding: 35px 60px;">
+                <p>{Address}</p>
+                <p>{ShopPhno}</p>
+                <p>{ShopEmail}</p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
