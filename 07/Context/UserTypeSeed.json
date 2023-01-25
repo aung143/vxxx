@@ -1,0 +1,14 @@
+[
+    {
+        "Name": "Admin",
+        "CreatedBy" : 1
+    },
+    {
+      "Name": "Seller",
+      "CreatedBy": 1
+    },
+    {
+      "Name": "Buyer",
+      "CreatedBy": 1
+    }
+  ]
