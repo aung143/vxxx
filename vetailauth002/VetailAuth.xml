@@ -1,0 +1,491 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VetailAuth</name>
+    </assembly>
+    <members>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetMyRoleAccess">
+            <summary>
+            GetMyRoleAccess, for staff management
+            </summary>
+            <remarks>Response of GetMyRoleAccess and GetRoleAccessByRoleId  are equal</remarks>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token <br>if not seller</br></response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetRoleAccessByRoleId(VetailAuth.API.Dtos.RoleDto.GetRoleAccessByRoleIdRequest)">
+            <summary>
+            GetRoleAccessByRoleId, seller for staff management
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token <br>if not seller</br></response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetRoles">
+            <summary>
+            Get all roles and first member list, for staff management
+            </summary>
+            <remarks>
+            if need to get other member list, can use GetUsersByRole
+            </remarks>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token <br>if not seller</br></response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetUsersByRole(VetailAuth.API.Dtos.RoleDto.GetUsersByRoleRequest)">
+            <summary>
+            for staff management
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token <br>if not seller</br></response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetAuthSettings">
+            <summary>
+            GetAuthSettings by selller, for staff management
+            </summary>
+            <remarks>this is used for get auth setting before calling SaveRoleAuthSetting</remarks>
+            <response code="401">if not include token <br>if not seller</br></response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.SaveRoleAuthSetting(VetailAuth.API.Dtos.RoleDto.SaveRoleAuthSettingRequest)">
+            <summary>
+            create, update roleAuthsetting, for staff management
+            </summary>
+            <remarks>
+            AuthIds must contain all ids to save or update
+            </remarks>
+            <response code="401">
+            if not include token 
+            <br>if not seller</br>
+            </response>
+            <response code="400"> if req.RoleName == "Admin", Message = Admin role cannot be deleted or modified</response>
+            <response code="409">role ‌name duplicate</response>
+            <response code="500">interanl server error</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.DeleteRole(VetailAuth.API.Dtos.RoleDto.DeleteRoleRequest)">
+            <summary>
+            for staff management
+            </summary>
+            <response code="401">
+            if not include token 
+            <br>if not seller</br>
+            </response>
+            <response code="400">
+            if req.RoleName == "Admin", Message = Admin role cannot be deleted or modified
+            <br/>if users are assigned for this role => This role cannot be deleted that assigned users
+            <br/> if role doest not exist => no data
+            </response>
+            <response code="500">interanl server error</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetRoleAuthSetting(VetailAuth.API.Dtos.RoleDto.GetRoleAuthSettingRequest)">
+            <summary>
+            GetRoleAuthSetting by selller, for staff management
+            </summary>
+            <remarks>authorized access for a role</remarks>
+            <response code="401">if not include token <br>if not seller</br></response>
+            <response code="500">interanl server error</response>
+            <response code="404">no data</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetUsers(VetailAuth.API.Dtos.RoleDto.GetUsersRequest)">
+            <summary>
+            GetUsers by selller, for staff management
+            </summary>
+            <remarks>user list showing in dropdown list to create new staff</remarks>
+            <response code="401">if not include token <br>if not seller</br></response>
+            <response code="500">interanl server error</response>
+            <response code="404">no data</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.GetShopInfoRoleListAndBranchList(VetailAuth.API.Dtos.RoleDto.GetShopInfoRoleListAndBranchListRequest)">
+            <summary>
+            GetShopInfoRoleListAndBranchList by selller, for staff management
+            </summary>
+            <remarks>for assign user role page data
+            <br/> can also use for ownership info
+            </remarks>
+            <response code="401">if not include token <br>if not seller</br></response>
+            <response code="500">interanl server error</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.AssignedUserRole(VetailAuth.API.Dtos.RoleDto.AssignedUserRoleRequest)">
+            <summary>
+            AssignedUserRole by selller, for staff management
+            </summary>
+            <response code="401">if not include token <br>if not seller</br></response>
+            <response code="500">interanl server error</response>
+            <response code="400">role does not exist <br/>
+            branch does not exist <br/>
+            owner cannot be changed role
+            </response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.DeleteUserRole(VetailAuth.API.Dtos.VetailAuthDto.DeleteUserRoleRequest)">
+            <summary>
+            DeleteUserRole by selller, unassign user from role, for staff management
+            </summary>
+            <response code="401">if not include token <br>if not seller</br></response>
+            <response code="500">interanl server error</response>
+            <response code="400">role does not exist <br/>
+            owner cannot be changed role
+            </response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.PostTransferShopOwner(VetailAuth.API.Dtos.RoleDto.PostTransferShopOwnerRequest)">
+            <summary>
+            PostTransferShopOwner by selller, for staff management
+            </summary>
+            <response code="401">if not include token <br>if not seller</br></response>
+            <response code="500">interanl server error</response>
+            <response code="400">
+            you are not owner, <br/>
+            Can not be undo bz it accepted
+            </response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.AcceptTransferShopOwner(VetailAuth.API.Dtos.VetailAuthDto.AcceptTransferShopOwnerRequest)">
+            <summary>
+            AcceptTransferShopOwner, for staff management
+            </summary>
+            <response code="401">if not include token</response>
+            <response code="500">interanl server error</response>
+            <response code="400">
+            no data, <br/>
+            Can not be accepted bz undo by owner
+            </response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.RejectTransferShopOwner(VetailAuth.API.Dtos.RoleDto.RejectTransferShopOwnerRequest)">
+            <summary>
+            AcceptTransferShopOwner, for staff management
+            </summary>
+            <response code="401">if not include token</response>
+            <response code="500">interanl server error</response>
+            <response code="400">
+            no data, <br/>
+            Can not be accepted bz undo by owner
+            </response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.RoleController.IsAuthenticated(VetailAuth.API.Dtos.RoleDto.IsAuthenticatedRequest)">
+            <summary>
+            IsAuthenticate, for authentication
+            </summary>
+            <response code="401">if not include token</response>
+            <response code="500">interanl server error</response>
+            <response code="403">
+            permission access denied
+            </response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.Login(VetailAuth.API.Dtos.VetailAuthDto.LoginRequest)">
+            <summary>
+            buyer, seller login
+            </summary>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.SendOTP(VetailAuth.API.Dtos.VetailAuthDto.SendOTPRequest)">
+            <summary>send otp</summary>
+            <remarks>Can be used for
+            1.register
+            2.forgotpassword (add token)
+            3.resend otp
+            4.change phone number or email (add token)
+            <a target="blank" href="http://warrior.shopdoora.com/auth/swagger/index.html">flow chart</a>
+            </remarks>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.UpdateUser(VetailAuth.API.Dtos.VetailAuthDto.UpdateUserRequest)">
+            <summary>
+            UpdateUser, for profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.ChangePhoneNumber(VetailAuth.API.Dtos.VetailAuthDto.ChangePhoneNumberRequest)">
+            <summary>
+            ChangePhoneNumber, for profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.ChangeEmail(VetailAuth.API.Dtos.VetailAuthDto.ChangeEmailRequest)">
+            <summary>
+            ChangeEmail, for profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.ChangeLanguage(VetailAuth.API.Dtos.VetailAuthDto.ChangeLanguageRequest)">
+            <summary>
+            ChangeLanguage, for change language
+            </summary>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.SaveDeliveryAddress(VetailAuth.API.Dtos.VetailAuthDto.SaveDeliveryAddressRequest)">
+            <summary>
+            SaveDeliveryAddress, profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.DeleteDeliveryAddress(VetailAuth.API.Dtos.VetailAuthDto.DeleteDeliveryAddressRequest)">
+            <summary>
+            DeleteDeliveryAddress, profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.GetMyDeliveryAddressList">
+            <summary>
+            GetMyDeliveryAddressList, profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.GetDeliAddress(VetailAuth.API.Dtos.VetailAuthDto.GetDeliAddressRequest)">
+            <summary>
+            GetDeliAddress, profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.ChangeDeliAddress(VetailAuth.API.Dtos.VetailAuthDto.ChangeDeliAddressRequest)">
+            <summary>
+            ChangeDeliAddress, profile
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.CreateUserBySeller(VetailAuth.API.Dtos.VetailAuthDto.CreateUserBySellerRequest)">
+            <summary>
+            CreateUserBySeller, customer list
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+            <response code="401">if not seller</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.GetAllShopList(VetailAuth.API.Dtos.VetailAuthDto.GetAllShopListRequest)">
+            <summary>
+            GetAllShopList, for vetail admin
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="M:VetailAuth.API.Controllers.VetailAuthController.GetShopInfobyIdForVetailAdmin(System.Int32)">
+            <summary>
+            GetShopInfoById, for vetail admin
+            </summary>
+            <response code="500">interanl server error</response>
+            <response code="401">if not include token</response>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.CommonRequest.LanCode">
+            <summary>
+            my for myanmar
+            en for english
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.OtherServiceDto.CreateNotificationRequest.ToUserId">
+            <summary>
+            userids to be sent
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.AssignedUserRoleRequest.BranchIds">
+            <summary>
+            if not exist branch, id = 0
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.DeleteRoleRequest.Id">
+            <summary>
+            roleId must not be 0
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.GetAuthSettingsResponse.Settings">
+            <summary>Normal setting</summary>
+            <remarks>remark normal setting</remarks>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.GetRoleAuthSettingResponse.Settings">
+            <summary>Normal permission setting</summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.RoleActionNameItem.CanAccess">
+            <summary>
+            if have permission access, 'true'
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.RolesItem.MemberList">
+            <summary>
+            if no data, will be []
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.UserResponse.OwnerType">
+            <summary>
+            0 for null<br/>
+            100 for owner <br/>
+            99 for draft owner, transfered by owner but not accept by next owner
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.GetShopInfoRoleListAndBranchListRequest.UserId">
+            <summary>
+            if userid = 0, 
+            UserInfo == null
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.GetShopInfoRoleListAndBranchListRequest.RequestTypeIds">
+            <summary>
+            if RequestTypeIds is null or empty return all else <br/>
+            1 for shopInfo, 2 for rolelist, 3 for branchlist<br/>
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.RoleRes.IsSelected">
+            <summary>
+            if assigned this user, IsSelected = true
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.BranchRes.Name">
+            <summary>
+            if name = 'ပင်ရင်း', id = 0
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.BranchRes.IsSelected">
+            <summary>
+            if assigned this user, IsSelected = true
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.GetUsersByRoleRequest.RoleId">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.RoleUser.OwnerType">
+            <summary>
+            0 for null
+            100 for draft owner, transfered by owner but not received
+            99 for owner
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.PostTransferShopOwnerRequest.UserId">
+            <summary>
+            Transfer this user
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.PostTransferShopOwnerRequest.RequestTypeId">
+            <summary>
+            0 for transfer <br/>
+            1 for transfer undo
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.SaveRoleAuthSettingRequest.Id">
+            <summary>
+            This is roleId
+            if update, id is required
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.SaveRoleAuthSettingRequest.RoleName">
+            <summary>
+            RoleName == "Admin", do not allow
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.RoleDto.SaveRoleAuthSettingRequest.AuthIds">
+            <summary>
+            From /api/Role/GetAuthSettings => actionItems > Id   
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.AuthSetting.Id">
+            <summary>
+            id is always same for this permission, can check with hard code
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.ChangeLanguageRequest.LanguageId">
+            <summary>
+            1 for myanmar
+            3 for eng
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.CreateUserBySellerRequest.Email">
+            <summary>
+            email or phoneNo is required
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.CreateUserBySellerRequest.DateOfBirth">
+            <summary>
+            dd-MM-yyyy
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.DeliAddressItem.LabelName">
+            <summary>
+            home, work, .....
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.DeliAddressItem.CategoryId">
+            <summary>
+            1 => Home <br/>
+            2 => Work <br/>
+            3 => Other <br/>
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.GetDeliAddressRequest.Id">
+            <summary>
+            delivery address id
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.GetDeliAddressResponse.LabelName">
+            <summary>
+            home, work, .....
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.GetDeliAddressResponse.CategoryId">
+            <summary>
+            1 => Home <br/>
+            2 => Work <br/>
+            3 => Other <br/>
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.LoginRequest.UniqueHardwardId">
+            <summary>
+            temporary for voucher print only
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.SaveDeliveryAddressRequest.Id">
+            <summary>
+            address id <br/>
+            if id = 0, insert
+            id != 0, update
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.SaveDeliveryAddressRequest.TownshipId">
+            <summary>
+            null or 0 or some value
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.SaveDeliveryAddressRequest.LabelName">
+            <summary>
+            if choose other, this is required
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.SaveDeliveryAddressRequest.CategoryId">
+            <summary>
+            1 => Home <br/>
+            2 => Work <br/>
+            3 => Other
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.SendOTPRequest.RequestType">
+            <summary>
+            1 => registration
+            2 => forgot password
+            3 => for change email or phone number
+            4 => for connect with email
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.UpdateUserRequest.Name">
+            <summary>
+            Name = "", will not update
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.UpdateUserRequest.DOB">
+            <summary>
+            DOB = "", will not update
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Dtos.VetailAuthDto.UpdateUserRequest.ProfileB64">
+            <summary>
+            ProfileB64 = "", will not update
+            </summary>
+        </member>
+        <member name="P:VetailAuth.API.Models.UserDeliveryAddress.CategoryId">
+            <summary>
+            1 => Home <br/>
+            2 => Work
+            3 => Other
+            </summary>
+        </member>
+        <member name="P:Vetail.API.Dtos.NotificationDto.CreateNotificationRequest.NotificationTemplateId">
+            <summary>
+            7 for ownership transfer
+            </summary>
+        </member>
+    </members>
+</doc>
