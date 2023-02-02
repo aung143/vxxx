@@ -1,0 +1,37 @@
+.container > ul li {
+    list-style: none;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.title > a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title > a > p {
+    font-size: 0.9rem;
+}
+
+.heading {
+    font-weight: 900;
+    font-size: 1.6rem;
+}
+
+.list {
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+    text-decoration: none;
+    background-color: #4361ee;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
