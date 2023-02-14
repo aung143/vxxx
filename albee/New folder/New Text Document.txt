@@ -1,0 +1,8 @@
+		<bill_to_forename>Aung Myo</bill_to_forename>
+			<bill_to_surname>Khaing</bill_to_surname>
+			<bill_to_email>aungmyokhaing.mhs@gmail.com</bill_to_email>
+			<bill_to_address_line1>Ahlone</bill_to_address_line1>
+			<bill_to_address_city>Yangon</bill_to_address_city>
+			<bill_to_address_postal_code>11121</bill_to_address_postal_code>
+			<bill_to_address_state>Yangon</bill_to_address_state>
+			<bill_to_address_country>MM</bill_to_address_country>
